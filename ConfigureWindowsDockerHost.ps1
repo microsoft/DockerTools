@@ -8,11 +8,6 @@
     & '.\ConfigureWindowsDockerHost.ps1' 'C:\Containers'
 #>
 
-[cmdletbinding(SupportsShouldProcess = $true)]
-Param(
-  [string] [Parameter(Mandatory=$true)] $CertsDirectory
-)
-
 function OpenPorts {
     [cmdletbinding()]
     param()
@@ -97,7 +92,7 @@ function SaveBase64EncodedCertificateToFile {
 #OpenPorts
 
 # Save all required Docker certificates
-DecryptProtectedSettings | SaveDockerCertificates -directory $CertsDirectory
+DecryptProtectedSettings | SaveDockerCertificates -directory "C:\Containers"
 
 # Restart Docker service to consume the certificates
 Restart-Service DockerService
