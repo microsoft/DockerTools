@@ -94,7 +94,7 @@ function SaveBase64EncodedCertificateToFile {
 }
 
 # Open Docker required ports
-OpenPorts
+#OpenPorts
 
 # Save all required Docker certificates
 DecryptProtectedSettings | SaveDockerCertificates -directory $CertsDirectory
