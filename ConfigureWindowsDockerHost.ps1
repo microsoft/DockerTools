@@ -1,27 +1,22 @@
-#Requires –Version 3.0
+#Requires -Version 3.0
 
 <#
 .DESCRIPTION
     Configure Docker on Windows Server 2016 Technical Preview 3 with Containers to work with Visual Studio 2015 Tools for Docker.
 
 .EXAMPLE
-    & '.\ConfigureWindowsDockerHost.ps1' 'C:\Containers'
+    & '.\ConfigureWindowsDockerHost.ps1'
 #>
-
-[cmdletbinding(SupportsShouldProcess = $true)]
-Param(
-  [string] [Parameter(Mandatory=$true)] $CertsDirectory
-)
 
 function OpenPorts {
     [cmdletbinding()]
     param()
     process {
         # For ASP.NET 5 web application
-        netsh advfirewall firewall add rule name="http 80" dir=in action=allow protocol=TCP localport=80
+        netsh advfirewall firewall add rule name="Http 80" dir=in action=allow protocol=TCP localport=80
 
         # For Docker daemon
-        netsh advfirewall firewall add rule name="Docker 2376" dir=in action=allow protocol=TCP localport=2376
+        netsh advfirewall firewall add rule name="Docker Secure Port" dir=in action=allow protocol=TCP localport=2376
     }
 }
 
@@ -44,10 +39,10 @@ function DecryptProtectedSettings {
 
         # Find the cert from local certificate store
         $cert = Get-ChildItem Cert:\LocalMachine\My\$certThumbprint    
-        $certs = new-object System.Security.Cryptography.X509Certificates.X509Certificate2Collection($cert)
+        $certs = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection($cert)
         
         # Decrypt the protected settings
-        $env = new-object Security.Cryptography.Pkcs.EnvelopedCms 
+        $env = New-Object Security.Cryptography.Pkcs.EnvelopedCms 
         $env.Decode($encryptedSettings)
         $env.Decrypt($certs)
         $decryptedBytes = $env.ContentInfo.Content
@@ -68,8 +63,9 @@ function SaveDockerCertificates {
         $directory
     )
     process {
-        # work around a bug in runDockerDaemon.cmd
-        SaveBase64EncodedCertificateToFile $protectedSettingsJson.certs.ca (Join-Path $directory "cert.pem") 
+        if (-Not (Test-Path $directory)) {
+            New-Item $directory -type directory
+        }
         
         SaveBase64EncodedCertificateToFile $protectedSettingsJson.certs.ca (Join-Path $directory "ca.pem")
         SaveBase64EncodedCertificateToFile $protectedSettingsJson.certs.cert (Join-Path $directory "server-cert.pem")
@@ -94,10 +90,10 @@ function SaveBase64EncodedCertificateToFile {
 }
 
 # Open Docker required ports
-#OpenPorts
+OpenPorts
 
 # Save all required Docker certificates
-DecryptProtectedSettings | SaveDockerCertificates -directory $CertsDirectory
+DecryptProtectedSettings | SaveDockerCertificates -directory "$env:ProgramData\docker\certs.d"
 
 # Restart Docker service to consume the certificates
-Restart-Service DockerService
+Restart-Service Docker
