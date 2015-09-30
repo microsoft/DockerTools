@@ -95,5 +95,36 @@ OpenPorts
 # Save all required Docker certificates
 DecryptProtectedSettings | SaveDockerCertificates -directory "$env:ProgramData\docker\certs.d"
 
-# Restart Docker service to consume the certificates
-Restart-Service Docker
+# Wait for the Docker service
+Write-Output "Waiting for Docker service..."
+$dockerServiceReady = $false
+$dockerService = Get-Service -Name Docker -ErrorAction SilentlyContinue
+$startTime = Get-Date
+
+while (-not $dockerReady)
+{
+	if ($dockerService.Length -gt 0) 
+	{
+		Write-Output "Docker service exists!"
+		$dockerReady = $true
+	}
+	else
+	{
+		$timeElapsed = $(Get-Date) - $startTime
+		
+		if ($($timeElapsed).TotalMinutes -ge 1)
+		{
+			throw "Docker service did not start successfully within 1 minute."
+		} 
+
+		# Try again
+		Start-Sleep -sec 1
+	}
+}
+
+if ($dockerReady)
+{
+	Write-Output "Restarting Docker service."
+	# Restart Docker service to consume the certificates
+	Restart-Service Docker
+}
