@@ -1,11 +1,9 @@
-# DockerTools
-Tools For Docker, including Visual Studio Provisioning and Publishing
+# Visual Studio 2017 Tools for Docker 
+The current tooling supports building and debugging .NET Framework web/console applications on Windows or .Net Core web/console application on Linux using [Docker For Windows](https://www.docker.com/docker-windows)
 
-The contents of this repo are currently used to enable provisioning of Docker Container Hosts in Azure through the [Visual Studio Tools for Docker](http://aka.ms/DockerToolsForVs) 
-The script included here is an internal part of the Visual Studio Tools for Docker, to fill a gap until we complete the Docker Extension for Windows. 
+This repo is currently used as a location to log issues against the latest release of the tooling that is integrated into the Visual Studio 2017 product. 
 
-It is not intended to be used directly. The repo and it's content are made public to enable the Docker Host to pull this script dynamically
 # For Info On Docker Tools & Documentation
 
-- [Walkthrough of the Visual Studio 2015 Tools for Docker ](https://azure.microsoft.com/en-us/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker)
-- [Windows Container Docs ](https://aka.ms/WindowsContainers)
+- [Put a .NET Core App in a Container with the new Docker Tools for Visual Studio ](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/)
+
