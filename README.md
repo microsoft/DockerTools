@@ -1,7 +1,7 @@
-# Visual Studio 2017 Tools for Docker 
+# Visual Studio 2017 and 2019 Tools for Docker 
 The current tooling supports building and debugging .NET Framework web/console applications using Windows containers or .Net Core web/console applications using Linux containers. The tooling requires installing  [Docker For Windows](https://www.docker.com/docker-windows) separately from Visual Studio. 
 
-<b><i>This repo is currently used solely as a location to log issues against the latest release of the tooling that is integrated into the Visual Studio 2017 product.</i></b>
+<b><i>This repo is currently used solely as a location to log issues against the latest release of the tooling that is integrated into the Visual Studio 2017 and 2019 products.</i></b>
 
 # Documentation
 
