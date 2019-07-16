@@ -1,8 +1,10 @@
-Changelog for [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://www.nuget.org/packages/Microsoft.VisualStudio.Azure.Containers.Tools.Targets/) NuGet package
+Changelog for [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://www.nuget.org/packages/Microsoft.VisualStudio.Azure.Containers.Tools.Targets/) NuGet package. This list is not exhaustive; it is curated to include only interesting changes.
 
+- 1.7.12
+  - Updates to logic for determining if ports that Docker wants to map are already in use when debugging in VS.
 - 1.7.8
-  - (Meta) Added Release Notes field to this NuGet package, linking to this document
-  - Change to FIPS-compliant version of SHA256
+  - (Meta) Added Release Notes field to this NuGet package, linking to this document.
+  - Change to FIPS-compliant version of SHA256.
 - 1.7.2
   - For ASP.NET Core apps, if the "UserSecretsId" MSBuild property is set, the appropriate user secrets folder will be volume mapped and available in the container even if SSL is not enabled.
 - 1.5.4
