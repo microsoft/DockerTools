@@ -1,5 +1,9 @@
 Changelog for [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://www.nuget.org/packages/Microsoft.VisualStudio.Azure.Containers.Tools.Targets/) NuGet package. This list is not exhaustive; it is curated to include only interesting changes.
 
+- 1.9.2
+  - Adds support for Azure function container debugging.
+    - Also requires Visual Studio 16.3 Preview 2 or later.
+    - Currently Linux containers only.
 - 1.7.12
   - Updates to logic for determining if ports that Docker wants to map are already in use when debugging in VS.
 - 1.7.8
