@@ -1,5 +1,8 @@
 Changelog for [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://www.nuget.org/packages/Microsoft.VisualStudio.Azure.Containers.Tools.Targets/) NuGet package. This list is not exhaustive; it is curated to include only interesting changes.
 
+- 1.9.5
+  - Adds support for Blazor ASP.NET Core web apps
+    - Also requires Visual Studio 16.3 Preview 3 or later.
 - 1.9.2
   - Adds support for Azure function container debugging.
     - Also requires Visual Studio 16.3 Preview 2 or later.
