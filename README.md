@@ -5,7 +5,7 @@ The current tooling supports building and debugging .NET Framework web/console a
 
 # Documentation
 
-- [Put a .NET Core App in a Container with the new Docker Tools for Visual Studio ](https://blogs.msdn.microsoft.com/webdev/2016/11/16/new-docker-tools-for-visual-studio/)
+- [Container Tools in Visual Studio](https://docs.microsoft.com/en-us/visualstudio/containers/overview?view=vs-2019)
 
 # Contributing
 
