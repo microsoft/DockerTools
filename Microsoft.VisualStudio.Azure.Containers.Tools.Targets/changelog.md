@@ -1,5 +1,16 @@
 Changelog for [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://www.nuget.org/packages/Microsoft.VisualStudio.Azure.Containers.Tools.Targets/) NuGet package. This list is not exhaustive; it is curated to include only interesting changes.
 
+- 1.11.1
+  - Add support for isolated Azure Functions (.NET5).
+  - Fix an issue where docker pull used to fail during warmup if dockerfile had dockerfile ARGs.
+  - Show custom MSBuild properties in the UI.
+- 1.10.8
+  - Fix issue with inconsistent nuget package and tooling version
+- 1.9.10
+  - Use dynamic ports instead of explicit ports.
+  - Create the container with project name.
+  - Support custom `BaseIntermediateOutputPath`.
+  - Add support for scaffolding Azure Functions v3 projects.
 - 1.9.5
   - Adds support for Blazor ASP.NET Core web apps
     - Also requires Visual Studio 16.3 Preview 3 or later.
