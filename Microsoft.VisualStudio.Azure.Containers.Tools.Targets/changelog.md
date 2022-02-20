@@ -1,5 +1,8 @@
 Changelog for [Microsoft.VisualStudio.Azure.Containers.Tools.Targets](https://www.nuget.org/packages/Microsoft.VisualStudio.Azure.Containers.Tools.Targets/) NuGet package. This list is not exhaustive; it is curated to include only interesting changes.
 
+- 1.14.0
+  - Fixes a bug in adding Docker support for .NET framework web project.
+  - Fixes a bug in debugging .NET 6 web project with Docker support.
 - 1.11.1
   - Add support for isolated Azure Functions (.NET5).
   - Fix an issue where docker pull used to fail during warmup if dockerfile had dockerfile ARGs.
